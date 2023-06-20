@@ -1,0 +1,12 @@
+{
+  "include": [
+    "./",
+    "../shared"
+  ],
+  "compilerOptions": {
+    "outDir": "../../dist",
+    "moduleResolution": "node16",
+    "module": "commonjs",
+    "experimentalDecorators": true
+  }
+}

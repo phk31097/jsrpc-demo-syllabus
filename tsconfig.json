@@ -1,6 +1,8 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  "exclude": ["src/server"],
   "compileOnSave": false,
+  "exclude": ["src/server"],
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
