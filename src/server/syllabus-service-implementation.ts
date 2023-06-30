@@ -7,16 +7,11 @@ import {CourseSearch} from "../shared/course-search-interface";
 @Rpc
 export class SyllabusServiceImplementation implements SyllabusService {
   getCourses(search: CourseSearch): Course[] {
-    if (!search.filter) return ALL_COURSES.slice(0, search.limit);
-    const filterLowercase = search.filter.toLowerCase();
-    return (ALL_COURSES as Course[]).filter(course => {
-      if (course.name.toLowerCase().includes(filterLowercase)) {
-        return true;
-      }
-      if (course.description.toLowerCase().includes(filterLowercase)) {
-        return true;
-      }
-      return false;
-    }).slice(0, search.limit);
+    return ALL_COURSES.filter(course => this.isIncluded(course, search.filter)).slice(0, search.limit);
+  }
+
+  isIncluded(course: Course, filter: string): boolean {
+    if (!filter) return true;
+    return (course.name + course.description).toLowerCase().indexOf(filter.toLowerCase()) !== -1;
   }
 }
